@@ -1,0 +1,115 @@
+/* Safety: prevent overflow weirdness */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 80px 16px 40px;
+
+  font-family: "Courier";
+  text-align: center;
+
+  background: linear-gradient(to bottom, #ffe4ec, #ffb6c1, #ff9aa2);
+  color: #c9184a;
+
+  overflow-x: hidden; /* extra safety */
+}
+
+.dessert-title {
+  font-size: 32px;
+  margin: 0 0 28px;
+  text-shadow: 1px 1px 2px #ffd6e0;
+}
+
+/* Title */
+.dessert-selection h1 {
+  font-size: 32px;
+  margin: 0 0 28px;
+  text-shadow: 1px 1px 2px #ffd6e0;
+}
+
+/* Container */
+.dessert-selection {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: flex-start; /* align tops nicely */
+  gap: 26px;
+  flex-wrap: wrap;
+
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto 36px;
+}
+
+/* Each item */
+.dessert-item {
+  width: min(220px, 92vw);
+  text-align: center; /* 👈 ensures image + text are centered */
+}
+
+/* Images: same width + height, never overflow */
+.dessert-item img {
+  width: 100%;
+  max-width: 100%;
+  height: 220px;
+  display: block;
+
+  border-radius: 22px;
+  border: 4px solid #ffb3c6;
+
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* Per-image adjustments (safe) */
+.dessert-item.scallop img {
+  object-position: 60% 50%;
+}
+
+.dessert-item.lamb img {
+  object-position: 50% 50%;
+}
+
+/* Drink: show full glass */
+.dessert-item.drink img {
+  object-fit: cover;
+  object-position: 1% 1%; /* adjust to keep the glass in view */
+}
+
+/* Captions */
+.dessert-item p {
+  margin: 12px 0 0;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  font-weight: 700;
+  color: #a4133c;
+}
+
+/* Button */
+.button {
+  padding: 12px 26px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+
+  font-family: "Courier";
+  background-color: #ffe3e1;
+  color: #c9184a;
+
+  border-radius: 14px;
+  border: 2px solid #ffb3c6;
+  box-shadow: 2px 2px 4px rgba(255, 148, 148, 0.5);
+  transition: all 0.25s ease;
+}
+
+.button:hover {
+  background-color: #ff8fab;
+  color: #ffffff;
+  border-color: #ff8fab;
+  box-shadow: 2px 2px 6px rgba(255, 105, 180, 0.6);
+  transform: scale(1.05);
+}
